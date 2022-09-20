@@ -1,26 +1,42 @@
 <html>
 	<head>
-		<title>Tracking</title>
-		<script>
-		<!--
-		function timedRefresh(timeoutPeriod) {
-			setTimeout("location.reload(true);",timeoutPeriod);
-		}
-	
-		window.onload = timedRefresh(10000);
-	
-		//   -->
-		</script>
+		<title>Example</title>
 	</head>
 	<style>
 		body {
-    		background-color: #000000;
+			background-color: #000000;
 		}
 	</style>
 	<body>
 		<div class="divIframe">
-			<iframe width=100% height=100% src="https://app.powerbi.com/reportEmbed?reportId=54e475de-e3a1-411c-bacd-d5de8c9af4f4&autoAuth=true&ctid=3bf4fe9d-1d78-457f-88c5-56818ef25dc6" frameborder="0" allowFullScreen="true"></iframe>
-			<align = middle>	
+			<iframe width=100% height=100% class="frame" 
+				src="https://app.powerbi.com/reportEmbed?reportId=54e475de-e3a1-411c-bacd-d5de8c9af4f4&autoAuth=true&ctid=3bf4fe9d-1d78-457f-88c5-56818ef25dc6" 
+				frameborder="0" allowFullScreen="true"></iframe>
+			<align=middle>
 		</div>
+		<script>
+			const arrayByUrls = [
+				'https://unilogexpress.com.br/',
+				"https://app.powerbi.com/reportEmbed?reportId=54e475de-e3a1-411c-bacd-d5de8c9af4f4&autoAuth=true&ctid=3bf4fe9d-1d78-457f-88c5-56818ef25dc6"
+			]
+
+			var i = 0
+
+			var id = window.setInterval(function () {
+					if (i >= arrayByUrls.length) {
+						clearInterval(id);
+						document.location.reload(true);
+						return;
+					}
+
+					document.getElementsByClassName("frame").item(0).src = arrayByUrls[i]
+
+					console.log(arrayByUrls[i]);
+					i++;
+				}, 10000)// mudar segundos aqui
+			
+
+
+		</script>
 	</body>
 </html>
